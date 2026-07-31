@@ -32,8 +32,7 @@ This project demonstrates the use of abstraction, encapsulation, inheritance, ex
 
 ```
 miniproj/
-│
-├── course_registration.py             
+├── proj_courseregsys.py             
 └── README_courseregsys.md                   
 ```
 
