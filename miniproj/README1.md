@@ -129,6 +129,7 @@ Data saved successfully.
  ## ScreenShort
 
  <img width="689" height="368" alt="Screenshot 2026-07-30 105014" src="https://github.com/user-attachments/assets/424703db-f80a-402f-b482-895472cf3cbb" />
+<img width="763" height="199" alt="Screenshot 2026-07-30 105023" src="https://github.com/user-attachments/assets/aecb9b2c-40d9-465c-b3d3-dee50ccf4688" />
 
 
 ## 📊 Output File
