@@ -34,7 +34,7 @@ This project demonstrates the use of abstraction, encapsulation, inheritance, ex
 CourseRegistrationSystem/
 │
 ├── course_registration.py               
-└── README1.md                   
+└── README_courseregsys.md                   
 ```
 
 ---
