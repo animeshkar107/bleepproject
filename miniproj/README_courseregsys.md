@@ -32,7 +32,9 @@ This project demonstrates the use of abstraction, encapsulation, inheritance, ex
 
 ```
 miniproj/
-├── proj_courseregsys.py             
+├── proj_courseregsys.py
+├── proj_librarymanagsys.py            
+└── README_librarymanagsys.md       
 └── README_courseregsys.md                   
 ```
 
@@ -78,7 +80,7 @@ Registration details are stored in a CSV file named:
 ```
 registrations.csv
 ```
-
+which will opened when runned the project 
 ---
 
 ## ▶️ How to Run
@@ -89,7 +91,7 @@ registrations.csv
 4. Run the program:
 
 ```bash
-python course_registration.py
+python proj_courseregsys.py
 ```
 
 5. Enter the required details:
