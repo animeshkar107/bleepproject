@@ -76,7 +76,7 @@ Book records are stored in a text file named:
 ```text
 books.txt
 ```
-
+which will be opened when runned the project
 ---
 
 ## ▶️ How to Run
@@ -87,7 +87,7 @@ books.txt
 4. Run the program:
 
 ```bash
-python library_management.py
+python proj_librarymanagsys.py
 ```
 
 5. Choose an option from the menu:
