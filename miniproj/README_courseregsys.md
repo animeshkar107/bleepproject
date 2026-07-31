@@ -80,7 +80,7 @@ Registration details are stored in a CSV file named:
 ```
 registrations.csv
 ```
-which will opened when runned the project 
+
 ---
 
 ## ▶️ How to Run
