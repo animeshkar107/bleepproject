@@ -100,20 +100,6 @@ python library_management.py
    * Save Records
    * Exit
 
----
-
-## 📸 Screenshots
-
-### Program Execution
-
-![Program Execution](screenshots/output1.png)
-
-### Saved Records
-
-![Books File](screenshots/output2.png)
-
----
-
 ## 📄 Sample Output
 
 ```text
