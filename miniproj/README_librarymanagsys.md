@@ -78,7 +78,7 @@ Book records are stored in a text file named:
 ```text
 books.txt
 ```
-which will be opened when runned the project
+
 ---
 
 ## ▶️ How to Run
