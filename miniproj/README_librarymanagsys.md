@@ -32,8 +32,10 @@ This project demonstrates the implementation of abstraction, encapsulation, exce
 
 ```text
 miniproj/
-├── proj_librarymanagsys.py     
-├── README_librarymanagsys.md                 
+├── proj_courseregsys.py
+├── proj_librarymanagsys.py            
+└── README_librarymanagsys.md       
+└── README_courseregsys.md                                   
 ```
 
 ---
