@@ -31,9 +31,9 @@ This project demonstrates the use of abstraction, encapsulation, inheritance, ex
 ## 📂 Project Structure
 
 ```
-CourseRegistrationSystem/
+miniproj/
 │
-├── course_registration.py               
+├── course_registration.py             
 └── README_courseregsys.md                   
 ```
 
