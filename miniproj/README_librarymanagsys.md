@@ -31,9 +31,8 @@ This project demonstrates the implementation of abstraction, encapsulation, exce
 ## 📂 Project Structure
 
 ```text
-LibraryManagementSystem/
-│
-├── library_management.py     
+miniproj/
+├── proj_librarymanagsys.py     
 ├── README_librarymanagsys.md                 
 ```
 
