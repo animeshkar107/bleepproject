@@ -1,4 +1,4 @@
--- All Screenshort are present inside READMEd file
+*Screenshort of individual project are present inside their individual READMEd file*
 
 ## README_proj_librarymanagsys.md => proj_librarymanagsys.py
 ## books.txt => proj_librarymanagsys.py
