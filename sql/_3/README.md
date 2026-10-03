@@ -1,8 +1,8 @@
 # SQL Data Cleaning and Transformation using ClassicModels
 
-This project demonstrates **data cleaning, transformation, validation, duplicate detection, and standardization** using MySQL.
+This project demonstrates **data cleaning, transformation, validation, duplicate detection, and standardization** using SQL.
 
-The **ClassicModels sample database was downloaded from the internet** and used as the dataset for practicing MySQL data-cleaning techniques.
+The **ClassicModels sample database was downloaded from the internet** and used as the dataset for practicing SQL data-cleaning techniques.
 
 ---
 
