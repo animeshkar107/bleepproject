@@ -2,7 +2,9 @@
 
 ## 📌 Project Overview
 
-This project uses the **ClassicModels** database to practice advanced SQL concepts, especially **Window Functions** and **time-based analysis**.
+This is a SQL project using the **ClassicModels** sample database.
+
+The **ClassicModels database was downloaded from the internet** and imported into MySQL for practicing advanced SQL concepts, especially **Window Functions** and **time-based analysis**.
 
 The queries analyze product prices, product rankings, customer payment history, monthly payment trends, payment growth, and moving averages.
 
