@@ -4,9 +4,7 @@
 
 This is a SQL project using the **ClassicModels** sample database.
 
-The **ClassicModels database was downloaded from the internet** and imported into MySQL for practicing SQL queries.
-
-This project analyzes relationships between different tables in the **ClassicModels** database using SQL `JOIN` operations.
+The **ClassicModels database was downloaded from the internet** and imported into MySQL for practicing SQL `JOIN` operations.
 
 The analysis connects customers, payments, employees, offices, orders, order details, and products to understand how the data is related.
 
