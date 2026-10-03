@@ -1,8 +1,8 @@
 # SQL Database named- Practise for Foundations & Database Operations 
 
-This project is a basic **MySQL practice project** that demonstrates fundamental SQL concepts using a student and course database.
-
 ## 📌 Project Overview 
+
+This project is a basic **MySQL practice project** that demonstrates fundamental SQL concepts using a student and course database.
 
 The project creates a database named `Practise` and performs different SQL operations such as:
 
