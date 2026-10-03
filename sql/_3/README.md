@@ -2,9 +2,9 @@
 
 ## 📌 Project Overview
 
-This project is a SQL practice exercise using the ClassicModels sample database.
+This is a SQL project using the **ClassicModels** sample database.
 
-The ClassicModels database was downloaded from the internet and imported into MySQL for practicing SQL queries on customer, product, sales representative, and payment data.
+The **ClassicModels database was downloaded from the internet** and imported into MySQL for practicing SQL queries on customer, product, sales representative, and payment data.
 
 This project focuses on identifying and handling common **data quality issues** in the ClassicModels database using MySQL.
 
