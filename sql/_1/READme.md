@@ -306,7 +306,7 @@ The `CASE` expression checks the conditions from top to bottom and returns the r
 
 # 🎯 Learning Objectives
 
-This project helps practice the fundamentals of **MySQL and SQL**, including:
+This project helps practice the fundamentals of **SQL**, including:
 
 1. Creating and managing databases.
 2. Creating tables with appropriate data types.
