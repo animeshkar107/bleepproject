@@ -2,7 +2,7 @@
 
 This project is a basic **SQL practice project** that demonstrates fundamental SQL concepts using a student and course database.
 
-## 📌 Project Overview
+## 📌 Project Overview 
 
 The project creates a database named `Practise` and performs different SQL operations such as:
 
