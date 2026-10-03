@@ -344,5 +344,6 @@ DELETE
 DQL
 SELECT
 
-📝 Conclusion
+# 📝 Conclusion
+
 This project provides hands-on practice with fundamental MySQL concepts. It covers database creation, table management, data manipulation, conditional expressions, and record categorization, making it a useful beginner-level SQL practice project.
