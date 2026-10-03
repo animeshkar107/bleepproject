@@ -1,4 +1,4 @@
-# SQL Database named Practice
+# SQL Database named- Practise
 
 This project is a basic **MySQL practice project** that demonstrates fundamental SQL concepts using a student and course database.
 
