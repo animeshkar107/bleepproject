@@ -1,4 +1,4 @@
-# ClassicModels SQL Practice Project
+# SQL using ClassicModels
 
 ## 📌 Project Overview
 
