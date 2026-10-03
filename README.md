@@ -8,24 +8,29 @@
 ## registrations.csv => proj_courseregsys.py
 
 ## For SQL Folder only follow these steps-
-─ sql/
-    └── _1/
-        ├── _1 images (contains o/p screenshot)
-        ├── README.md
-        └── _1.sql
-    └── _2/
-        ├── _2 images (contains o/p screenshot)
-        ├── README.md
-        └── _2.sql
-    └── _3/
-        ├── _3 images (contains o/p screenshot)
-        ├── README.md
-        └── _3.sql
-    └── _4/
-        ├── _4 images (contains o/p screenshot)
-        ├── README.md
-        └── _4.sql
-    └── _5/
-        ├── _5 images (contains o/p screenshot)
-        ├── README.md
-        └── _5.sql
+sql/
+│
+├── 📁 miniproject 1/
+│   ├── 📁 _1 images/       → Output screenshots
+│   ├── 📄 README.md
+│   └── 📄 _1.sql
+│
+├── 📁 miniproject 2/
+│   ├── 📁 _2 images/       → Output screenshots
+│   ├── 📄 README.md
+│   └── 📄 _2.sql
+│
+├── 📁 miniproject 3/
+│   ├── 📁 _3 images/       → Output screenshots
+│   ├── 📄 README.md
+│   └── 📄 _3.sql
+│
+├── 📁 miniproject 4/
+│   ├── 📁 _4 images/       → Output screenshots
+│   ├── 📄 README.md
+│   └── 📄 _4.sql
+│
+└── 📁 miniproject 5/
+    ├── 📁 _5 images/       → Output screenshots
+    ├── 📄 README.md
+    └── 📄 _5.sql
