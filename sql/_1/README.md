@@ -1,6 +1,6 @@
 # SQL Database named- Practise
 
-This project is a basic **MySQL practice project** that demonstrates fundamental SQL concepts using a student and course database.
+This project is a basic **SQL practice project** that demonstrates fundamental SQL concepts using a student and course database.
 
 ## 📌 Project Overview
 
@@ -85,7 +85,7 @@ USE Practise;
 SHOW DATABASES;
 ```
 
-The `SHOW DATABASES` command displays all databases available in the MySQL server.
+The `SHOW DATABASES` command displays all databases available in the SQL server.
 
 ---
 
