@@ -1,6 +1,6 @@
-# SQL Database named- Practise
+# SQL Database named- Practise for Foundations & Database Operations 
 
-This project is a basic **SQL practice project** that demonstrates fundamental SQL concepts using a student and course database.
+This project is a basic **MySQL practice project** that demonstrates fundamental SQL concepts using a student and course database.
 
 ## 📌 Project Overview 
 
@@ -306,7 +306,7 @@ The `CASE` expression checks the conditions from top to bottom and returns the r
 
 # 🎯 Learning Objectives
 
-This project helps practice the fundamentals of **SQL**, including:
+This project helps practice the fundamentals of **MySQL**, including:
 
 1. Creating and managing databases.
 2. Creating tables with appropriate data types.
