@@ -1,42 +1,14 @@
 # SQL Data Cleaning and Transformation using ClassicModels
 
-This project demonstrates **data cleaning, transformation, validation, duplicate detection, and standardization** using SQL.
-
-The **ClassicModels sample database was downloaded from the internet** and used as the dataset for practicing SQL data-cleaning techniques.
-
----
-
 ## 📌 Project Overview
 
-Real-world datasets often contain missing values, inconsistent formats, duplicate records, unnecessary spaces, and values that need to be transformed before analysis.
+This project is a SQL practice exercise using the ClassicModels sample database.
 
-This project uses SQL to perform common data-cleaning operations on the ClassicModels database.
+The ClassicModels database was downloaded from the internet and imported into MySQL for practicing SQL queries on customer, product, sales representative, and payment data.
 
-### Main concepts covered:
+This project focuses on identifying and handling common **data quality issues** in the ClassicModels database using MySQL.
 
-* Handling missing values
-* Replacing `NULL` values
-* Removing unnecessary spaces
-* Combining columns
-* Converting text to lowercase
-* Cleaning phone numbers
-* Detecting duplicates
-* Calculating fulfillment time
-* Extracting values from strings
-* Type conversion
-* Detecting inconsistent data
-* Standardizing values
-* Updating records
-
----
-
-# 🗄️ Database Used
-
-```sql
-USE classicmodels;
-```
-
-The **ClassicModels database was downloaded from the internet** and imported into SQL for learning and practice.
+The goal is to clean, transform, standardize, and analyze data so that it becomes more consistent and easier to work with.
 
 The project works with tables such as:
 
@@ -48,9 +20,29 @@ The project works with tables such as:
 
 ---
 
-# 📚 SQL Concepts Used
+# 🔎 Issues Identified
 
-## 1. Handling Missing Values with `COALESCE()`
+The following data quality issues were identified in the ClassicModels dataset:
+
+1. Missing values
+2. Unclean customer names
+3. Unclean email addresses
+4. Inconsistent phone number formats
+5. Possible duplicate phone numbers
+6. Missing shipping dates
+7. Product scale stored as text
+8. Invalid or inconsistent credit limits
+9. Inconsistent country names
+
+---
+
+# 🛠️ How the Issues Were Handled
+
+## 1. Missing Values
+
+Some customer records contain missing values in fields such as `state` and `addressLine2`.
+
+### Handling missing `state`
 
 ```sql
 SELECT customerNumber,
@@ -59,25 +51,15 @@ SELECT customerNumber,
 FROM customers;
 ```
 
-`COALESCE()` returns the first non-NULL value.
+`COALESCE()` replaces a `NULL` value with the specified replacement value.
 
-In this example:
+In this case:
 
-* If `state` contains a value → that value is returned.
-* If `state` is `NULL` → `'N/A'` is returned.
+```text
+NULL → N/A
+```
 
-### Example
-
-| state      | Result     |
-| ---------- | ---------- |
-| California | California |
-| NULL       | N/A        |
-
----
-
-# 2. Finding `NULL` Values
-
-The `IS NULL` operator is used to find missing values.
+### Finding missing `addressLine2`
 
 ```sql
 SELECT customerNumber,
@@ -87,31 +69,13 @@ FROM customers
 WHERE addressLine2 IS NULL;
 ```
 
-This returns customers whose `addressLine2` is missing.
-
-### Important
-
-For NULL values, use:
-
-```sql
-IS NULL
-```
-
-or
-
-```sql
-IS NOT NULL
-```
-
-rather than:
-
-```sql
-= NULL
-```
+`IS NULL` is used to identify records where a value is missing.
 
 ---
 
-# ✂️ 3. Removing Extra Spaces Using `TRIM()`
+# 2. Name Cleaning
+
+Customer names can contain unnecessary leading or trailing spaces.
 
 ```sql
 SELECT customerNumber,
@@ -119,15 +83,9 @@ SELECT customerNumber,
 FROM customers;
 ```
 
-`TRIM()` removes unnecessary spaces from the beginning and end of a string.
+### Combining First and Last Names
 
-This is useful when cleaning text data.
-
----
-
-# 👤 4. Combining First and Last Names
-
-The `CONCAT()` function combines multiple strings.
+The contact's first and last names are combined into one full name.
 
 ```sql
 SELECT customerNumber,
@@ -137,22 +95,19 @@ SELECT customerNumber,
 FROM customers;
 ```
 
-### Functions used:
+### Concepts Used
 
-* `CONCAT()` → combines values
-* `TRIM()` → removes unnecessary spaces
+* `TRIM()`
+* `CONCAT()`
+* Column aliases using `AS`
 
-For example:
-
-```text
-Animesh + " " + Kar
-        ↓
-Animesh Kar
-```
+`TRIM()` removes unnecessary spaces, while `CONCAT()` combines multiple strings.
 
 ---
 
-# 📧 5. Cleaning Email Addresses
+# 3. Email Cleaning
+
+Employee names and email addresses are cleaned using string functions.
 
 ```sql
 SELECT EmployeeNumber,
@@ -161,75 +116,66 @@ SELECT EmployeeNumber,
 FROM employees;
 ```
 
-Multiple cleaning functions are combined here.
+### Cleaning Process
 
-### `TRIM()`
+The email is:
 
-Removes unnecessary spaces.
-
-### `LOWER()`
-
-Converts text to lowercase.
-
-### `CONCAT()`
-
-Combines first name and last name.
+1. Trimmed using `TRIM()`
+2. Converted to lowercase using `LOWER()`
 
 For example:
 
 ```text
-" ANIMESH.KAR@GMAIL.COM "
+"  JOHN@EXAMPLE.COM  "
           ↓
-"animesh.kar@gmail.com"
+"john@example.com"
 ```
 
-This helps maintain a consistent email format.
+This makes email values more consistent.
 
 ---
 
-# 📱 6. Cleaning Phone Numbers
+# 4. Phone Number Cleaning
+
+Phone numbers may contain characters such as:
+
+```text
++1 212 555 1234
+(212) 555-1234
+```
+
+These formats can make phone numbers difficult to compare.
+
+The project removes all non-numeric characters:
 
 ```sql
 SELECT officeCode,
        city,
        phone AS original_phone,
-       REGEXP_REPLACE(phone, '[^0-9]', '') AS cleaned_phone_number
+       REGEXP_REPLACE(phone, '[^0-9]', '')
+       AS cleaned_phone_number
 FROM offices;
 ```
 
-`REGEXP_REPLACE()` is used to remove unwanted characters from phone numbers.
+### Concept Used
 
-### Regular Expression
+`REGEXP_REPLACE()` uses a regular expression to replace unwanted characters.
+
+The pattern:
 
 ```text
 [^0-9]
 ```
 
-means any character that is **not a digit from 0 to 9**.
+means any character that is **not a digit**.
 
-Therefore, characters such as:
-
-```text
-+
--
-(
-)
-space
-```
-
-can be removed.
-
-### Example
-
-```text
-+1 (555) 123-4567
-        ↓
-15551234567
-```
+Therefore, only numbers from `0` to `9` remain.
 
 ---
 
-# 🔎 7. Detecting Duplicate Values
+# 5. Duplicate Detection
+
+Possible duplicate phone numbers are identified using `GROUP BY` and `HAVING`.
 
 ```sql
 SELECT phone,
@@ -239,25 +185,21 @@ GROUP BY phone
 HAVING COUNT(*) > 1;
 ```
 
-This query identifies phone numbers that appear more than once.
+### How It Works
 
-### Concepts used:
+* `GROUP BY phone` groups customers with the same phone number.
+* `COUNT(*)` counts the records in each group.
+* `HAVING COUNT(*) > 1` displays only phone numbers appearing more than once.
 
-* `GROUP BY`
-* `COUNT()`
-* `HAVING`
+This helps identify potential duplicate records.
 
-### How it works
-
-1. Records are grouped by phone number.
-2. `COUNT(*)` counts records in each group.
-3. `HAVING COUNT(*) > 1` keeps only repeated phone numbers.
-
-This is a common technique for **duplicate detection**.
+> Duplicate detection does not automatically mean the records are duplicates. The records should be checked further before deleting anything.
 
 ---
 
-# 📦 8. Order Fulfillment Analysis
+# 6. Order Fulfillment Analysis
+
+Some orders may not have a `shippedDate` because they have not been shipped yet.
 
 ```sql
 SELECT orderNumber,
@@ -271,59 +213,42 @@ SELECT orderNumber,
 FROM orders;
 ```
 
-This query calculates how many days it took to ship an order.
+### Concepts Used
 
----
+* `CASE`
+* `IS NULL`
+* `DATEDIFF()`
+* `CAST()`
 
-## `DATEDIFF()`
+### Logic
 
-```sql
-DATEDIFF(shippedDate, orderDate)
-```
-
-calculates the difference between two dates.
-
-For example:
-
-```text
-Order Date   → 2024-01-01
-Shipped Date → 2024-01-05
-
-Difference   → 4 days
-```
-
----
-
-## `CASE`
-
-The `CASE` expression handles orders that have not been shipped.
-
-```sql
-WHEN shippedDate IS NULL
-THEN 'Not Shipped Yet'
-```
-
-If the shipping date is missing, the query displays:
+If `shippedDate` is missing:
 
 ```text
 Not Shipped Yet
 ```
 
-Otherwise, it displays the number of fulfillment days.
-
----
-
-## `CAST()`
+Otherwise, the number of days between the order date and shipping date is calculated.
 
 ```sql
-CAST(DATEDIFF(shippedDate, orderDate) AS CHAR)
+DATEDIFF(shippedDate, orderDate)
 ```
 
-converts the numeric result of `DATEDIFF()` into text so it can be returned alongside the text value `'Not Shipped Yet'`.
+This provides a simple measure of order fulfillment time.
 
 ---
 
-# 🏷️ 9. Product Scale Transformation
+# 7. Product Scale Transformation
+
+The `productScale` column contains values such as:
+
+```text
+1:18
+1:24
+1:32
+```
+
+The numeric scale factor is extracted from the text.
 
 ```sql
 SELECT productCode,
@@ -336,15 +261,11 @@ SELECT productCode,
 FROM products;
 ```
 
-This query extracts the numeric portion from the `productScale` column.
+### Concepts Used
 
-### `SUBSTRING_INDEX()`
-
-```sql
-SUBSTRING_INDEX(productScale, ':', -1)
-```
-
-extracts the part after the last `:`.
+* `SUBSTRING_INDEX()`
+* `CAST()`
+* `AS UNSIGNED`
 
 For example:
 
@@ -354,33 +275,13 @@ For example:
 18
 ```
 
----
-
-## `CAST()`
-
-```sql
-CAST(... AS UNSIGNED)
-```
-
-converts the extracted text into an unsigned integer.
-
-So:
-
-```text
-'18'
-```
-
-becomes:
-
-```text
-18
-```
-
-This makes the value easier to use in numerical calculations.
+The value after the last `:` is extracted and converted from text into an unsigned integer.
 
 ---
 
-# ⚠️ 10. Detecting Data Inconsistency
+# 8. Data Inconsistency
+
+The project checks for customers with invalid or unusual credit limits.
 
 ```sql
 SELECT customerNumber,
@@ -390,27 +291,28 @@ FROM customers
 WHERE creditLimit <= 0;
 ```
 
-This query identifies customers whose credit limit is zero or negative.
+This identifies records where the credit limit is zero or negative.
 
-Such values can be investigated as potential **data-quality issues or inconsistencies**.
-
-The query does not automatically mean that every returned value is incorrect; it identifies records that may require further checking.
+Such records can be reviewed as potential data quality issues.
 
 ---
 
-# 🔄 11. Standardizing Data
+# 9. Country Standardization
 
-Before updating the country values:
+Different abbreviations can represent the same country.
+
+For example:
+
+```text
+USA → United States
+UK  → United Kingdom
+```
+
+The project standardizes these values using `CASE`.
 
 ```sql
 SET SQL_SAFE_UPDATES = 0;
-```
 
-This disables MySQL's safe-update restriction for the session.
-
-The country values are then standardized:
-
-```sql
 UPDATE customers
 SET country =
     CASE
@@ -421,150 +323,79 @@ SET country =
 WHERE country IN ('USA', 'UK');
 ```
 
-### Transformation
+### Result
 
-```text
-USA
- ↓
-United States
-```
+| Original | Standardized   |
+| -------- | -------------- |
+| USA      | United States  |
+| UK       | United Kingdom |
 
-and
-
-```text
-UK
- ↓
-United Kingdom
-```
-
-Other country values remain unchanged because of:
-
-```sql
-ELSE country
-```
+The `WHERE` condition ensures that only the required country values are updated.
 
 ---
 
-# 🔐 12. `SQL_SAFE_UPDATES`
+# 🧠 SQL Concepts Used
 
-```sql
-SET SQL_SAFE_UPDATES = 0;
-```
-
-MySQL's safe-update mode can prevent certain `UPDATE` or `DELETE` operations that do not use an appropriate key-based condition.
-
-After disabling it, the update is performed with a `WHERE` condition:
-
-```sql
-WHERE country IN ('USA', 'UK');
-```
-
-This limits the update to the intended records.
-
----
-
-# 📊 13. Verifying the Updated Data
-
-```sql
-SELECT country, customerName
-FROM customers;
-```
-
-After standardization, this query can be used to verify the country values.
+| SQL Concept         | Purpose                            |
+| ------------------- | ---------------------------------- |
+| `SELECT`            | Retrieve data                      |
+| `WHERE`             | Filter records                     |
+| `IS NULL`           | Find missing values                |
+| `COALESCE()`        | Replace `NULL` values              |
+| `TRIM()`            | Remove unnecessary spaces          |
+| `CONCAT()`          | Combine strings                    |
+| `LOWER()`           | Convert text to lowercase          |
+| `REGEXP_REPLACE()`  | Remove unwanted characters         |
+| `GROUP BY`          | Group similar records              |
+| `COUNT()`           | Count records                      |
+| `HAVING`            | Filter grouped results             |
+| `CASE`              | Apply conditional logic            |
+| `DATEDIFF()`        | Calculate difference between dates |
+| `CAST()`            | Convert data types                 |
+| `SUBSTRING_INDEX()` | Extract part of a string           |
+| `UPDATE`            | Modify existing records            |
+| `SET`               | Assign new values                  |
+| `SQL_SAFE_UPDATES`  | Control safe update restrictions   |
 
 ---
 
-# 🧮 SQL Functions Used
+# 📋 Issue → Solution Summary
 
-| Function            | Purpose                                   |
-| ------------------- | ----------------------------------------- |
-| `COALESCE()`        | Replaces `NULL` with an alternative value |
-| `TRIM()`            | Removes extra spaces                      |
-| `CONCAT()`          | Combines strings                          |
-| `LOWER()`           | Converts text to lowercase                |
-| `REGEXP_REPLACE()`  | Replaces text using a regular expression  |
-| `COUNT()`           | Counts records                            |
-| `DATEDIFF()`        | Calculates difference between dates       |
-| `CAST()`            | Converts a value to another data type     |
-| `SUBSTRING_INDEX()` | Extracts part of a string                 |
-| `CASE`              | Performs conditional logic                |
-
----
-
-# 🛠️ SQL Concepts Covered
-
-| Concept                | Example                  |
-| ---------------------- | ------------------------ |
-| Missing values         | `COALESCE()`             |
-| NULL checking          | `IS NULL`                |
-| Text cleaning          | `TRIM()`                 |
-| String concatenation   | `CONCAT()`               |
-| Text standardization   | `LOWER()`                |
-| Pattern-based cleaning | `REGEXP_REPLACE()`       |
-| Duplicate detection    | `GROUP BY + HAVING`      |
-| Conditional logic      | `CASE`                   |
-| Date calculation       | `DATEDIFF()`             |
-| Data type conversion   | `CAST()`                 |
-| String extraction      | `SUBSTRING_INDEX()`      |
-| Data validation        | `WHERE creditLimit <= 0` |
-| Data standardization   | `UPDATE + CASE`          |
-| Safe update control    | `SQL_SAFE_UPDATES`       |
+| Issue                        | Solution                  | SQL Concepts                    |
+| ---------------------------- | ------------------------- | ------------------------------- |
+| Missing `state`              | Replace `NULL` with `N/A` | `COALESCE()`                    |
+| Missing `addressLine2`       | Identify missing records  | `IS NULL`                       |
+| Extra spaces in names        | Remove spaces             | `TRIM()`                        |
+| Separate first/last names    | Combine names             | `CONCAT()`                      |
+| Inconsistent emails          | Trim and lowercase        | `TRIM()`, `LOWER()`             |
+| Inconsistent phone formats   | Keep only digits          | `REGEXP_REPLACE()`              |
+| Duplicate phone numbers      | Identify repeated values  | `GROUP BY`, `COUNT()`, `HAVING` |
+| Missing shipping dates       | Show shipping status      | `CASE`, `IS NULL`               |
+| Calculate fulfillment time   | Find date difference      | `DATEDIFF()`                    |
+| Product scale stored as text | Extract numeric value     | `SUBSTRING_INDEX()`, `CAST()`   |
+| Invalid credit limits        | Find values ≤ 0           | `WHERE`                         |
+| Inconsistent country names   | Standardize country names | `CASE`, `UPDATE`                |
 
 ---
 
-# 🎯 Learning Objectives
+# 🎯 Key Outcomes
 
-This project helps practice how SQL can be used for real-world data preparation.
+After applying these queries:
 
-The main objectives are:
-
-1. Identify and handle missing values.
-2. Replace `NULL` values with meaningful alternatives.
-3. Remove unnecessary spaces from text.
-4. Combine multiple columns into one value.
-5. Standardize email formats.
-6. Clean phone numbers using regular expressions.
-7. Detect duplicate records.
-8. Calculate date differences.
-9. Transform string-based data into numeric values.
-10. Identify potentially inconsistent data.
-11. Standardize different representations of the same value.
-12. Update existing records using conditional logic.
+* Missing values can be identified and handled.
+* Customer and employee names can be cleaned.
+* Email addresses can be standardized.
+* Phone numbers can be converted into a consistent numeric format.
+* Potential duplicate phone numbers can be detected.
+* Orders can be analyzed based on shipping status and fulfillment time.
+* Product scale information can be transformed from text into numeric values.
+* Potentially invalid credit limits can be identified.
+* Country names can be standardized for consistency.
 
 ---
 
-# 🔄 Data Cleaning Workflow
+## 📝 Conclusion
 
-The project follows a basic data-cleaning workflow:
+This project demonstrates how SQL can be used not only to retrieve data but also to perform basic **data cleaning, transformation, validation, and standardization**.
 
-```text
-Raw Data
-   ↓
-Identify Missing Values
-   ↓
-Handle NULL Values
-   ↓
-Clean Text
-   ↓
-Clean Emails and Phone Numbers
-   ↓
-Detect Duplicates
-   ↓
-Transform Data
-   ↓
-Identify Inconsistencies
-   ↓
-Standardize Values
-   ↓
-Verify Cleaned Data
-```
-
----
-
-# 📝 Conclusion
-
-This project demonstrates practical **SQL data-cleaning and transformation techniques** using the ClassicModels sample database.
-
-It shows how SQL can be used not only to retrieve data but also to **clean, validate, transform, standardize, and prepare data for further analysis**.
-
-The **ClassicModels database was downloaded from the internet** and used as a sample dataset for learning and practicing these SQL data-cleaning concepts.
+The queries use MySQL string functions, conditional expressions, aggregate functions, regular expressions, date functions, and data modification commands to improve the consistency and usability of the ClassicModels dataset.
