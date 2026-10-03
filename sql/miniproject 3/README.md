@@ -4,9 +4,7 @@
 
 This is a SQL project using the **ClassicModels** sample database.
 
-The **ClassicModels database was downloaded from the internet** and imported into MySQL for practicing SQL queries on customer, product, sales representative, and payment data.
-
-This project focuses on identifying and handling common **data quality issues** in the ClassicModels database using MySQL.
+The **ClassicModels database was downloaded from the internet** and imported into MySQL for practicing SQL queries on  identifying and handling common **data quality issues** in the ClassicModels database using MySQL.
 
 The goal is to clean, transform, standardize, and analyze data so that it becomes more consistent and easier to work with.
 
