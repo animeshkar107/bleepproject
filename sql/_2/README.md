@@ -6,7 +6,7 @@ This project is a SQL practice exercise using the **ClassicModels** sample datab
 
 The **ClassicModels database was downloaded from the internet** and imported into MySQL for practicing SQL queries on customer, product, sales representative, and payment data.
 
-The project focuses on retrieving, filtering, sorting, grouping, and analyzing data using MySQL.
+The project focuses on retrieving, filtering, sorting, grouping, and analyzing data using SQL.
 
 ---
 
